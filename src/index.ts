@@ -525,16 +525,11 @@ function attachRoadwayOptionHandlers(roadwayMessageId: number) {
 
     const impersonate = globalContext.substituteParams(
       preset.impersonate,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
       {
-        roadwaySelected: message.extra?.[KEYS.EXTRA.OPTIONS]?.[index],
-      },
-      undefined,
+        dynamicMacros: { roadwaySelected: message.extra?.[KEYS.EXTRA.OPTIONS]?.[index] }
+      }
     );
+    
     if (settings.impersonateApi === 'profile') {
       if (!settings.impersonateProfileId) {
         await st_echo('error', 'Please select an impersonation connection profile in the settings.');
