@@ -525,15 +525,9 @@ function attachRoadwayOptionHandlers(roadwayMessageId: number) {
 
     const impersonate = globalContext.substituteParams(
       preset.impersonate,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      undefined,
       {
-        roadwaySelected: message.extra?.[KEYS.EXTRA.OPTIONS]?.[index],
+        dynamicMacros: { roadwaySelected: message.extra?.[KEYS.EXTRA.OPTIONS]?.[index] },
       },
-      undefined,
     );
     if (settings.impersonateApi === 'profile') {
       if (!settings.impersonateProfileId) {
